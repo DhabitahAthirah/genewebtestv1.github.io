@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(233, 231, 231);
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+    }
+</style>
+<div class="container">
+<!-- Main container -->
+<div class="container my-5">
+    <!-- DNA Sequence Input -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Enter DNA Sequence</h5>
+        <form id="dna-sequence-form">
+          <div class="mb-3">
+            <label for="dna-sequence" class="form-label">DNA Sequence</label>
+            <textarea class="form-control" id="dna-sequence" rows="5" required></textarea>
+          </div>
+  
+          <!-- Enzyme Filter -->
+          <div class="mb-3">
+            <div class="container">
+                <h4>Filter By</h4>
+                <label for="sort-options" class="form-label">Maximum Cuts</label>
+                <select class="form-select" id="sort-options">
+                    <option value="name">All</option>
+                    <option value="name">40</option>
+                    <option value="name">30</option>
+                    <option value="name">20</option>
+                    <option value="name">10</option>
+                    <option value="name">5</option>
+                    <option value="name">4</option>
+                    <option value="name">3</option>
+                    <option value="name">2</option>
+                    <option value="name">1</option>
+                    <option value="cut">0</option>
+                </select>
+                <label for="sort-options" class="form-label">Minimum Site Length</label>
+                <select class="form-select" id="sort-options">
+                    <option value="name">4</option>
+                    <option value="name">5</option>
+                    <option value="name">6</option>
+                    <option value="name">7</option>
+                    <option value="name">8</option>
+                </select>
+            </div>
+          </div>
+  
+          <!-- Sorting Options -->
+          <div class="mb-3">
+            <div class="container">
+                <label for="sort-options" class="form-label">Sort By</label>
+                <select class="form-select" id="sort-options">
+                    <option value="name">Frequency</option>
+                    <option value="cut">Overhang</option>
+                    <option value="cut">Name</option>
+                    <option value="cut">Site_Length</option>
+                </select>
+            </div>
+            <div class="container" style="padding-top: 10px;">
+                <select class="form-select" id="sort-options">
+                    <option value="cut">Overhang</option>
+                    <option value="name">Frequency</option>
+                    <option value="cut">Name</option>
+                    <option value="cut">Site_Length</option>
+                </select>
+            </div>
+            <div class="container" style="padding-top: 10px;">
+                <select class="form-select" id="sort-options">
+                    <option value="cut">Name</option>
+                    <option value="name">Frequency</option>
+                    <option value="cut">Overhang</option>
+                    <option value="cut">Site_Length</option>
+                </select>
+            </div>     
+          </div>
+          <button type="submit" class="btn btn-primary">Analyze Sequence</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Sequence Information -->
+    <div class="card mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Sequence Information</h5>
+        <p id="sequence-info">No sequence information available yet.</p>
+      </div>
+    </div>
+  
+    <!-- Results Table -->
+    <div class="card mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Enzyme Cut Sites</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Enzyme Name</th>
+              <th>Cut Position(s)</th>
+              <th>Number of Cuts</th>
+            </tr>
+          </thead>
+          <tbody id="enzyme-results">
+            <!-- Dynamic enzyme results will appear here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>
+     <!-- Show error message if any -->
+     {% if error %}
+     <div class="alert alert-danger mt-4">{{ error }}</div>
+     {% endif %}
+ 
+     <!-- Display restriction map results -->
+     {% if restriction_map %}
+     <h2 class="mt-5">Restriction Sites</h2>
+     <ul class="list-group mt-3">
+         {% for enzyme, sites in restriction_map.items() %}
+         <li class="list-group-item">
+             <strong>{{ enzyme }}</strong>: Cuts at positions {{ sites }}
+         </li>
+         {% endfor %}
+     </ul>
+     {% endif %}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+</div>
+{% endblock %}

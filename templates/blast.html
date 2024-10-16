@@ -1,0 +1,123 @@
+<!-- home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('static/img/bg.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+    }
+</style>
+<div class="container" style="padding-bottom: 50px;">
+    <div class="container"style="background-color: rgba(0, 0, 0, 0.7); color: white; padding: 20px; text-align: left;">
+        <h4>BLAST</h4>
+          <P>Basic Local Alignment Search Tool (BLAST) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance</P>
+          <div class="container" style="padding-top: 20px;">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card" style="background-color: rgba(255, 255, 255, 0.8); color: black; padding: 10px; text-align: left;">
+                     <h4>BLASTN</h4>
+                     <p>nucleotide > nucleotide</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="background-color: rgba(255, 255, 255, 0.8); color: black; padding: 10px; text-align: left;">
+                     <h4>BLASTP</h4>
+                     <p>protein > protein</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="background-color: rgba(255, 255, 255, 0.8); color: black; padding: 10px; text-align: left;">
+                     <h4>BLASTX</h4>
+                     <p>translated nucleotide > protein</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row" style="padding-top: 10px;">
+               <div class="col-md-6">
+                  <div class="card" style="background-color: rgba(255, 255, 255, 0.8); color: black; padding: 10px; text-align: left;">
+                     <h4>TBLASTN</h4>
+                     <p>nucleotide > nucleotide</p>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="card" style="background-color: rgba(255, 255, 255, 0.8); color: black; padding: 10px; text-align: left;">
+                     <h4>BLASTN</h4>
+                     <p>protein > translated nucleotide</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+    <div class="card" style="background-color: rgba(0, 0, 0, 0.7); color: white; text-align: left;">
+        <div class="container-fluid" style="background-color: rgb(0, 3, 26);color: aliceblue;">
+            <h4>BLAST Identification System</h4>
+        </div>
+        <div class="container" style="padding-top: 15px;">
+        <form id="blastForm">
+            <label for="blast_type">Choose BLAST Type:</label>
+            <select id="blast_type" name="blast_type">
+                <option value="blastn">BLASTn</option>
+                <option value="blastp">BLASTp</option>
+                <option value="blastx">BLASTx</option>
+                <option value="tblastn">tBLASTn</option>
+            </select><br><br>
+                    <!-- Dropdown for selecting the database -->
+        <label for="database">Choose Database:</label>
+        <select id="database" name="database">
+            <option value="nt">Nucleotide (nt)</option>
+            <option value="nr">Non-Redundant Protein (nr)</option>
+            <option value="swissprot">SwissProt Protein</option>
+            <option value="pdb">Protein Data Bank (PDB)</option>
+            <option value="refseq_rna">RefSeq RNA</option>
+            <option value="refseq_protein">RefSeq Protein</option>
+        </select><br><br>
+        <!-- New Fields for Include/Exclude Organisms -->
+        <label for="include_organisms">Include Organisms (Taxonomy IDs or Names):</label><br>
+        <input type="text" id="include_organisms" name="include_organisms" placeholder="E.g., 9606 (human), 3702 (Arabidopsis)"><br><br>
+
+        <label for="exclude_organisms">Exclude Organisms (Taxonomy IDs or Names):</label><br>
+        <input type="text" id="exclude_organisms" name="exclude_organisms" placeholder="E.g., 10090 (mouse), 4932 (yeast)"><br><br>
+            <label for="sequence">Enter Sequence (FASTA format):</label><br>
+            <textarea id="sequence" name="sequence" rows="10" cols="60"></textarea><br><br>
+            <button type="button" class="btn btn-primary" onclick="submitBlast()">Run BLAST</button>
+        </form>
+        <!-- Optimize for section -->
+        <div class="container" style="padding-top: 10px;">
+            <label for="optimize">Optimize for:</label>
+            <select id="optimize" name="optimize">
+                <option value="default">Default</option>
+                <option value="short_sequences">Short Sequences</option>
+                <option value="high_similarity">High Similarity</option>
+            </select><br><br>
+        </div>
+        <h2>BLAST Results</h2>
+        <pre id="blastResults"></pre>
+    
+        <script>
+            function submitBlast() {
+                const form = document.getElementById('blastForm');
+                const formData = new FormData(form);
+    
+                fetch('/blast', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('blastResults').textContent = data.result;
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        </script>
+        </div>
+    </div>
+ </div>
+{% endblock %}

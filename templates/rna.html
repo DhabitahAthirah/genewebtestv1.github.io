@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-5">
+  <h2 class="mb-4">RNA data</h2>
+   <!-- Search bar -->
+  <input class="form-control mb-4" id="datatable-search-input" type="text" placeholder="Search">
+  <!-- Rows per page dropdown -->
+    <div class="mb-4">
+      <label for="rows-per-page">Show rows:</label>
+      <select id="rows-per-page" class="form-select" style="width: 100px; display: inline-block;">
+        <option value="2">2</option>
+        <option value="5"selected>5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+
+ <table id="example" class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>nDNA/mtDNA/cpDNA/plamid DNA</th>
+        <th>Function</th>
+        <th>Description</th>
+        <th>Author(s)</th>
+        <th>Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Name 1 </td>
+        <td>DNA data 1</td>
+        <td>function 1</td>
+        <td>Description 1</td>
+        <td>Author 1</td>
+        <td>Reference 1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Name 2 </td>
+        <td>DNA data 2</td>
+        <td>function 2</td>
+        <td>Description 2</td>
+        <td>Author 2</td>
+        <td>Reference 2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Name 3 </td>
+        <td>DNA data 3</td>
+        <td>function 3</td>
+        <td>Description 3</td>
+        <td>Author 3</td>
+        <td>Reference 3</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Name 4 </td>
+        <td>DNA data 4</td>
+        <td>function 4</td>
+        <td>Description 4</td>
+        <td>Author 4</td>
+        <td>Reference 4</td>
+      <tr>
+        <td>5</td>
+        <td>Name 5 </td>
+        <td>DNA data 5</td>
+        <td>function 5</td>
+        <td>Description 5</td>
+        <td>Author 5</td>
+        <td>Reference 5</td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>Name 6 </td>
+        <td>DNA data 6</td>
+        <td>function 6</td>
+        <td>Description 6</td>
+        <td>Author 6</td>
+        <td>Reference 6</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>Name 7 </td>
+        <td>DNA data 7</td>
+        <td>function 7</td>
+        <td>Description 7</td>
+        <td>Author 7</td>
+        <td>Reference 7</td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td>Name 8 </td>
+        <td>DNA data 8</td>
+        <td>function 8</td>
+        <td>Description 8</td>
+        <td>Author 8</td>
+        <td>Reference 8</td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>Name 9 </td>
+        <td>DNA data 9</td>
+        <td>function 9</td>
+        <td>Description 9</td>
+        <td>Author 9</td>
+        <td>Reference 9</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>Name 10 </td>
+        <td>DNA data 10</td>
+        <td>function 10</td>
+        <td>Description 10</td>
+        <td>Author 10</td>
+        <td>Reference 10</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+      <!-- Pagination -->
+  <nav aria-label="DataTable pagination">
+    <ul class="pagination pagination-circle" id="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+<!-- MDB5 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+<!-- DataTable Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tableRows = Array.from(document.querySelectorAll('#example tbody tr'));
+    const paginationElement = document.getElementById('pagination');
+    let currentPage = 1;
+    let rowsPerPage = parseInt(document.getElementById('rows-per-page').value);
+    const totalPages = () => Math.ceil(tableRows.length / rowsPerPage);
+
+    // Function to display rows based on the current page and rowsPerPage
+    function displayRows(page) {
+      const start = (page - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      tableRows.forEach((row, index) => {
+        row.style.display = (index >= start && index < end) ? '' : 'none';
+      });
+    }
+
+    // Function to create pagination buttons
+    function createPaginationButtons() {
+      paginationElement.innerHTML = ''; // Clear pagination content
+
+      // Create "Previous" button
+      const prevButton = document.createElement('li');
+      prevButton.classList.add('page-item');
+      prevButton.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+      prevButton.onclick = () => changePage(currentPage - 1);
+      if (currentPage === 1) prevButton.classList.add('disabled'); // Disable if on the first page
+      paginationElement.appendChild(prevButton);
+
+      // Create page number buttons
+      for (let i = 1; i <= totalPages(); i++) {
+        const pageButton = document.createElement('li');
+        pageButton.classList.add('page-item');
+        if (i === currentPage) pageButton.classList.add('active'); // Highlight current page
+        pageButton.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        pageButton.onclick = () => changePage(i);
+        paginationElement.appendChild(pageButton);
+      }
+
+      // Create "Next" button
+      const nextButton = document.createElement('li');
+      nextButton.classList.add('page-item');
+      nextButton.innerHTML = `<a class="page-link" href="#">Next</a>`;
+      nextButton.onclick = () => changePage(currentPage + 1);
+      if (currentPage === totalPages()) nextButton.classList.add('disabled'); // Disable if on the last page
+      paginationElement.appendChild(nextButton);
+    }
+
+    // Change the current page and re-render
+    function changePage(page) {
+      if (page < 1 || page > totalPages()) return;
+      currentPage = page;
+      displayRows(page);
+      createPaginationButtons();
+    }
+
+    // Initial render
+    displayRows(currentPage);
+    createPaginationButtons();
+
+    // Search functionality
+    const searchInput = document.getElementById('datatable-search-input');
+    searchInput.addEventListener('input', function() {
+      const query = searchInput.value.toLowerCase();
+      tableRows.forEach(row => {
+        const textContent = row.textContent.toLowerCase();
+        row.style.display = textContent.includes(query) ? '' : 'none';
+      });
+    });
+
+    // Handle changing rows per page
+    const rowsPerPageSelect = document.getElementById('rows-per-page');
+    rowsPerPageSelect.addEventListener('change', function() {
+      rowsPerPage = parseInt(this.value);
+      currentPage = 1;  // Reset to first page on rowsPerPage change
+      displayRows(currentPage);
+      createPaginationButtons();
+    });
+  });
+</script>
+
+</div>
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+<div class="container" style="padding-top: 20px;">
+  <div class="row w-100">
+      <div class="col-3">
+        <!-- Tab navs -->
+        <div
+          class="nav flex-column nav-tabs text-center"
+          id="v-tabs-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <a
+            class="nav-link active"
+            id="v-tabs-home-tab"
+            data-mdb-toggle="tab"
+            href="#v-tabs-home"
+            role="tab"
+            aria-controls="v-tabs-home"
+            aria-selected="true"
+            >Animal Identification (COI)</a
+          >
+          <a
+            class="nav-link"
+            id="v-tabs-profile-tab"
+            data-mdb-toggle="tab"
+            href="#v-tabs-profile"
+            role="tab"
+            aria-controls="v-tabs-profile"
+            aria-selected="false"
+            >Fungal Identification (ITS)</a
+          >
+          <a
+            class="nav-link"
+            id="v-tabs-plant-tab"
+            data-mdb-toggle="tab"
+            href="#v-tabs-plant"
+            role="tab"
+            aria-controls="v-tabs-plant"
+            aria-selected="false"
+            >Plant Identification (RBCL and MATK)</a
+          >
+          <a
+            class="nav-link"
+            id="v-tabs-microbe-tab"
+            data-mdb-toggle="tab"
+            href="#v-tabs-microbe"
+            role="tab"
+            aria-controls="v-tabs-microbe"
+            aria-selected="false"
+            >Microbe Identification</a
+          >
+        </div>
+        <!-- Tab navs -->
+      </div>
+    
+      <div class="col-9">
+        <!-- Tab content -->
+        <div class="tab-content" id="v-tabs-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="v-tabs-home"
+            role="tabpanel"
+            aria-labelledby="v-tabs-home-tab"
+          >
+           <h3>Species Level Barcode Records</h3>
+           <p style="font-size: 16px;">5,040,349 Sequences/246,329 Species/120,909 Interim Species</p>
+           <p style="font-size: 16px;">Every COI barcode record with a species level identification and a minimum sequence length of 500bp. This includes many species represented by only one or two specimens as well as all species with interim taxonomy.</p> 
+
+           <form id="dna-form">
+              <div class="mb-3">
+                  <label for="dna-sequence" class="form-label">Enter DNA Sequence:</label>
+                  <textarea class="form-control" id="dna-sequence" name="dna_sequence" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="results" style="margin-top: 20px;"></div>
+          </div>                    
+
+          <div
+            class="tab-pane fade"
+            id="v-tabs-profile"
+            role="tabpanel"
+            aria-labelledby="v-tabs-profile-tab"
+          >
+            <h3>ITS Sequences</h3>
+            <p style="font-size: 16px;">Every ITS barcode record on BOLD with a minimum sequence length of 100bp (warning: unvalidated database that includes records without species level identification). This includes many species represented by only one or two specimens as well as all species with interim taxonomy. This search only returns a list of the nearest matches and does not provide a probability of placement to a taxon.</p>
+            
+            <form id="dna-form">
+              <div class="mb-3">
+                  <label for="dna-sequence" class="form-label">Enter DNA Sequence:</label>
+                  <textarea class="form-control" id="dna-sequence" name="dna_sequence" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="results" style="margin-top: 20px;"></div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-tabs-plant"
+            role="tabpanel"
+            aria-labelledby="v-tabs-plant-tab"
+          >
+          <h3>Plant Sequences</h3>
+          <p style="font-size: 16px;">Every rbcL and matK barcode record on BOLD with a minimum sequence length of 500bp (warning: unvalidated database that includes records without species level identification). This includes many species represented by only one or two specimens as well as all species with interim taxonomy. This search only returns a list of the nearest matches and does not provide a probability of placement to a taxon.</p>
+          <form id="dna-form">
+              <div class="mb-3">
+                  <label for="dna-sequence" class="form-label">Enter DNA Sequence:</label>
+                  <textarea class="form-control" id="dna-sequence" name="dna_sequence" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <div id="results" style="margin-top: 20px;"></div>
+          </form> 
+        </div>
+          <div
+            class="tab-pane fade"
+            id="v-tabs-microbe"
+            role="tabpanel"
+            aria-labelledby="v-tabs-microbe-tab"
+          >
+            <h3>Microbial Sequences</h3>
+            <p style="font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptatm.</p>
+            <form id="dna-form">
+              <div class="mb-3">
+                  <label for="dna-sequence" class="form-label">Enter DNA Sequence:</label>
+                  <textarea class="form-control" id="dna-sequence" name="dna_sequence" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <div id="results" style="margin-top: 20px;"></div>
+            </form>
+          </div>
+        </div>
+        <!-- Tab content -->
+      </div>
+    </div>
+</div>
+</section>
+<!-- Script to handle form submission and display results -->
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('dna-form');  // Correctly referenced form element
+        const sequenceElement = document.getElementById('dna-sequence');  // DNA textarea element
+        const resultsContainer = document.getElementById('results');  // Results container
+
+        // Add form submit event listener
+        if (form) {  // Ensure form exists
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();  // Prevent traditional form submission
+
+                const sequenceValue = sequenceElement.value.trim();  // Get the DNA sequence value
+                if (!sequenceValue) {
+                    resultsContainer.innerHTML = `<p style="color: red;">Please enter a DNA sequence.</p>`;
+                    return;
+                }
+
+                resultsContainer.innerHTML = 'Processing...';
+
+                // Fetch request to submit the sequence to the backend
+                fetch('/identify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `sequence=${encodeURIComponent(sequenceValue)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        resultsContainer.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                    } else {
+                        let html = '<h4>Identification Results</h4>';
+                        html += '<ul>';
+                        data.forEach(result => {
+                            html += `
+                                <li>
+                                    <strong>Species:</strong> ${result.species} <br>
+                                    <strong>Similarity:</strong> ${result.similarity} <br>
+                                    <a href="${result.specimen_page}" target="_blank">Specimen Page</a>
+                                </li>
+                            `;
+                        });
+                        html += '</ul>';
+                        resultsContainer.innerHTML = html;
+                    }
+                })
+                .catch(error => {
+                    resultsContainer.innerHTML = `<p style="color: red;">Error: ${error}</p>`;
+                    console.error("Fetch error:", error);  // Log errors for easier debugging
+                });
+            });
+        } else {
+            console.error('Form element not found!');  // Log error if form is missing
+        }
+    });
+</script>
+{% endblock %}

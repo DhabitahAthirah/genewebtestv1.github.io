@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesia-GeneBank | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/css/main.css">
+    <!-- MDB5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet">
+
+    <!-- MDB5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('static/img/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 160vh;
+            display: flex;
+            flex-direction: column;
+            color: black;
+            backdrop-filter: blur(8px); /* Apply the blur effect */
+        }
+          .header-section {
+            position: relative;
+            background-color:rgba(255, 255, 255, 0.7);/* Set white background */
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black; /* Change text color to black */
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1; /* Ensures the text is above the overlay */
+            text-align: center;
+        }
+
+
+        header-section {
+            position: relative;
+            background: url('static/img/bg.jpg') no-repeat center center/cover;
+            height: 350px;
+          }
+          
+
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/static//icons/gene.png" width="34" height="34" style="padding-bottom: 3px;">
+        Indonesia-Gene
+      </a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home
+              <img src="/static//icons/home.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+          </li>
+  
+          <!-- Submit -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/submission">Submit
+              <img src="/static//icons/upload.svg"  width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+          </li>
+  
+          <!-- Database Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="databaseDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Database
+              <img src="/static//icons/database.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="databaseDropdown">
+              <li><a class="dropdown-item" href="/genedna">DNA</a></li>
+              <li><a class="dropdown-item" href="/rnadata">RNA</a></li>
+              <li><a class="dropdown-item" href="/proteindata">Protein</a></li>
+            </ul>
+          </li>
+  
+          <!-- Tools Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Tools
+              <img src="/static//icons/tools.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item" href="#">Alignment</a></li>
+              <li><a class="dropdown-item" href="#">Visualization</a></li>
+            </ul>
+          </li>
+  
+          <!-- Analysis Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="analysisDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Analysis
+              <img src="/static//icons/analysis.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="analysisDropdown">
+              <li><a class="dropdown-item" href="#">MEGA</a></li>
+              <li><a class="dropdown-item" href="#">Arlequin</a></li>
+              <li><a class="dropdown-item" href="#">Network</a></li>
+              <li><a class="dropdown-item" href="#">DnaSP</a></li>
+              <li><a class="dropdown-item" href="/restriction">Restriction Enzyme</a></li>
+              <li><a class="dropdown-item" href="/blastsearch">BLAST</a></li>
+              <li><a class="dropdown-item" href="/identifyspecies">Species Identification</a></li>
+            </ul>
+          </li>
+  
+          <!-- Related Links Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="linksDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Related Links
+              <img src="/static//icons/links.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="linksDropdown">
+              <li><a class="dropdown-item" href="https://www.ncbi.nlm.nih.gov/">NCBI</a></li>
+              <li><a class="dropdown-item" href="https://ngdc.cncb.ac.cn/">NGDC</a></li>
+              <li><a class="dropdown-item" href="https://www.embl.org/">EMBL</a></li>
+              <li><a class="dropdown-item" href="https://www.ddbj.nig.ac.jp/index-e.html">DDBJ Center</a></li>
+            </ul>
+          </li>
+  
+          <!-- Publication Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="publicationDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">Publication
+              <img src="/static//icons/publication.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="publicationDropdown">
+              <li><a class="dropdown-item" href="#">Journals</a></li>
+              <li><a class="dropdown-item" href="#">Books</a></li>
+              <li><a class="dropdown-item" href="#">Articles</a></li>
+            </ul>
+          </li>
+  
+          <!-- About Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">About
+              <img src="/static//icons/about.svg" width="20" height="20" style="padding-bottom: 3px;">
+            </a>
+            <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="aboutDropdown">
+              <li><a class="dropdown-item" href="/about">IndonesiaGene</a></li>
+              <li><a class="dropdown-item" href="#">People</a></li>
+              <li><a class="dropdown-item" href="#">Advisory Board</a></li>
+              <li><a class="dropdown-item" href="#">Collaborator</a></li>
+              <li><a class="dropdown-item" href="#">History</a></li>
+            </ul>
+          </li>
+         <!-- Right Side: Login and Register -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    /* Set the navbar background to black */
+    .custom-navbar {
+      background-color: black !important;
+    }
+  
+    /* Navbar links text color (white) */
+    .custom-navbar .nav-link,
+    .custom-navbar .navbar-brand,
+    .custom-navbar .dropdown-item {
+      color: white !important;
+    }
+  
+    /* Change color to light gray on hover */
+    .custom-navbar .nav-link:hover,
+    .custom-navbar .dropdown-item:hover {
+      color: black !important; /* Light text on dark hover background */
+      background-color: white !important; /* Light background on hover */
+    }
+  
+    /* Custom dropdown menu to match the navbar */
+    .custom-dropdown-menu {
+      background-color: black !important;
+    }
+  
+    /* Set the dropdown font to white */
+    .custom-dropdown-menu .dropdown-item {
+      color: white !important;
+    }
+  
+    /* Hover effect for dropdown items (switch to light theme) */
+    .custom-dropdown-menu .dropdown-item:hover {
+      color: black !important;  /* Black text on hover */
+      background-color: white !important; /* White background on hover */
+    }
+  
+    /* Navbar toggler icon white */
+    .custom-navbar .navbar-toggler-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(255,%20255,%20255,%20255)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"%3E%3C/path%3E%3C/svg%3E') !important;
+    }
+  </style>
+
+<section> 
+<div class="container-fluid">
+    <div class="header-section">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1>Welcome to Indonesia-GeneBank</h1>
+            <p>Aplikasi "DNA Barcode" Ikan Ekonomis Penting untuk Pengelolaan Kawasan Konservasi BHS, Papua</p>
+            <p>This research was funded by the DIPA Directorate of Research, Technology and Community Service, Directorate General of Higher Education, Research and Technology, Ministry of Education, Culture, Research and Technology.</p>
+            <div class="button-container">
+              <button class="btn btn-outline-dark">
+                <a href="/about" style="color: inherit; text-decoration: none;">Learn More</a>
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="container-fluid" style="padding-top: 20px;">
+  <div class="row">
+    <!-- BLAST Card -->
+    <div class="col-md-3">
+      <div class="card" style="background-color: rgba(255, 255, 255, 0.85); color: black; padding: 10px; text-align: left;backdrop-filter: blur(8px);">
+        <h4>BLAST</h4>
+        <p>Basic Local Alignment Search Tool (BLAST) finds regions of similarity between biological sequences...</p>
+        <div class="button-container">
+          <button class="btn btn-outline-dark">
+            <a href="/blastsearch" style="color: inherit; text-decoration: none;">Explore tool</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Restriction Enzyme Card -->
+    <div class="col-md-3">
+      <div class="card" style="background-color: rgba(255, 255, 255, 0.85); color: black; padding: 10px; text-align: left;backdrop-filter: blur(8px);">
+        <h4>Restriction Enzyme</h4>
+        <p>Maps sites for restriction enzymes, a.k.a. restriction endonucleases, in DNA sequences...</p>
+        <div class="button-container">
+          <button class="btn btn-outline-dark">
+            <a href="/restriction" style="color: inherit; text-decoration: none;">Explore tool</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Species Identification Card -->
+    <div class="col-md-3">
+      <div class="card" style="background-color: rgba(255, 255, 255, 0.85); color: black; padding: 10px; text-align: left;backdrop-filter: blur(8px);">
+        <h4>Species Identification</h4>
+        <p>The identification engine uses BOLDSYSTEMS API to identify organisms...</p>
+        <div class="button-container">
+          <button class="btn btn-outline-dark">
+            <a href="/identifyspecies" style="color: inherit; text-decoration: none;">Explore tool</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gene Database/Genebank Card -->
+    <div class="col-md-3">
+      <div class="card" style="background-color: rgba(255, 255, 255, 0.85); color: black; padding: 10px; text-align: left;backdrop-filter: blur(8px);">
+        <h4>Gene Database/Genebank</h4>
+        <p>Explore the GeneBank for a variety of gene data records...</p>
+        <div class="button-container">
+          <button class="btn btn-outline-dark">
+            <a href="/genebank" style="color: inherit; text-decoration: none;">Explore GeneBank</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<footer class="footer mt-auto bg-black text-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Mitra</h5>
+        <p>Brainy Bee Jl. Joyo Agung Perumahan Graha Dewata Blok Khusus W8 Landungsari Dau Malang-Jawa Timur 65151</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-uppercase">Partners</h6>
+        <div class="row">
+          <div class="col-md-2">
+            <img src="static/img/logo1.png" alt="Logo 1" class="img-fluid" style="max-width:60px; height:auto;" class="me-3">
+          </div>
+          <div class="col-md-2">
+            <img src="static/img/logo2.png" alt="Logo 2" class="img-fluid" style="max-width:60px; height:auto;" class="me-3">
+          </div>
+          <div class="col-md-2">
+            <img src="static/img/logo3.png" alt="Logo 3" class="img-fluid" style="max-width:60px; height:auto;" class="me-3">
+          </div>
+          <div class="col-md-2">
+            <img src="static/img/logo4.png" alt="Logo 4" class="img-fluid" style="max-width:60px; height:auto;" class="me-3">
+          </div>
+          <div class="col-md-2">
+            <img src="static/img/logo5.png" alt="Logo 5" class="img-fluid" style="max-width:60px; height:auto;" class="me-3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MDB5 JS & Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ <!-- Bootstrap and MDB5 JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+</body>
+</html>

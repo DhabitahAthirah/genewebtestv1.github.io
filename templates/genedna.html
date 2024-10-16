@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- MDB5 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet">
+<section class="vh-200"> 
+<div class="container my-5">
+  <h2 class="mb-4">Nucleotide data</h2>
+  
+  <!-- Search bar -->
+  <input class="form-control mb-4" id="datatable-search-input" type="text" placeholder="Search">
+  
+  <!-- Rows per page dropdown -->
+    <div class="mb-4">
+      <label for="rows-per-page">Show rows:</label>
+      <select id="rows-per-page" class="form-select" style="width: 100px; display: inline-block;">
+        <option value="2">2</option>
+        <option value="5"selected>5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+
+  <!-- Table -->
+  <table id="example" class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Defintion</th>
+        <th>Accession</th>
+        <th>Source</th>
+        <th>Organism</th>
+        <th>Authors</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Rhincodon typus isolate HP_NUS355 cytochrome oxidase subunit 1
+            (COI) gene, partial cds; mitochondrial</td>
+        <td>MN759764</td>
+        <td>mitochondrion Rhincodon typus (whale shark)</td>
+        <td>Rhincodon typus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Chondrichthyes;
+            Elasmobranchii; Galeomorphii; Galeoidea; Orectolobiformes;
+            Rhincodontidae; Rhincodon.</td>
+        <td>Toha,A.H.A., Dailami,M., Anwar,S., Setiawan,J.B., Jentewo,Y.,
+            Lapadi,I., Sutanto,S., Aryasari,R., Ambariyanto,A., Runtuboi,F. and
+            Madduppa,H.</td>
+        <td><a href="/dnafulldata1">More Info</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Tridacna crocea clone 2312.04 cytochrome oxidase subunit I (COI) gene, partial cds; mitochondrial
+        </td>
+        <td>KF446298</td>
+        <td>mitochondrion Tridacna crocea</td>
+        <td>Tridacna crocea
+        	Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Heteroconchia; Euheterodonta; Imparidentia;
+            Neoheterodontei; Cardiida; Cardioidea; Cardiidae; Tridacninae;
+            Tridacna.</td>
+        <td>DeBoer,T.S., Naguit,M.R., Erdmann,M.V., Ablan-Lagman,M.C.A.,
+            Ambariyanto,A., Carpenter,K.E., Toha,A.H.A. and Barber,P.H.</td>
+        <td><a href="/dnafulldata2">More Info</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Brachidontes sp. lineage B CDL-2020 isolate BCM_27 cytochrome c
+            oxidase subunit I (COI) gene, partial cds; mitochondrial.</td>
+        <td>MN579025</td>
+        <td>mitochondrion Brachidontes sp. lineage B CDL-2020</td>
+        <td>Brachidontes sp. lineage B CDL-2020
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Pteriomorphia; Mytilida; Mytiloidea; Mytilidae;
+            Brachidontinae; Brachidontes.</td>
+        <td>Leeuw,C.A., Peijnenburg,K.T.C.A., Gillespie,R.G., Maas,D.L.,
+            Hanzawa,N., Tuti,Y., Toha,A.H.A., Aji,L.P. and Becking,L.E.</td>
+        <td><a href="/dnafulldata3">More Info</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Mytilidae sp. lineage F CDL-2020 isolate Mis14_18 cytochrome c
+            oxidase subunit I (COI) gene, partial cds; mitochondrial</td>
+        <td>MN578313</td>
+        <td>mitochondrion Mytilidae sp. lineage F CDL-2020</td>
+        <td>Mytilidae sp. lineage F CDL-2020
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Pteriomorphia; Mytilida; Mytiloidea; Mytilidae</td>
+        <td>Leeuw,C.A., Peijnenburg,K.T.C.A., Gillespie,R.G., Maas,D.L.,
+            Hanzawa,N., Tuti,Y., Toha,A.H.A., Aji,L.P. and Becking,L.E.</td>
+        <td><a href="/dnafulldata4">More Info</a></td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>Mytilidae sp. lineage F CDL-2020 isolate Mis14_18 cytochrome c
+            oxidase subunit I (COI) gene, partial cds; mitochondrial</td>
+        <td>MN578313</td>
+        <td>mitochondrion Mytilidae sp. lineage F CDL-2020</td>
+        <td>Rhincodon typus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Chondrichthyes;
+            Elasmobranchii; Galeomorphii; Galeoidea; Orectolobiformes;
+            Rhincodontidae; Rhincodon.</td>
+        <td>Toha,A.H.A., Dailami,M., Anwar,S., Setiawan,J.B., Jentewo,Y.,
+            Lapadi,I., Sutanto,S., Aryasari,R., Ambariyanto,A., Runtuboi,F. and
+            Madduppa,H.</td>
+        <td><a href="/dnafulldata5">More Info</a></td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>Rhincodon typus isolate HP_NUS350 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial</td>
+        <td>MN759763</td>
+        <td>mitochondrion Rhincodon typus (whale shark)</td>
+        <td>Mytilidae sp. lineage F CDL-2020
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Pteriomorphia; Mytilida; Mytiloidea; Mytilidae</td>
+        <td>Leeuw,C.A., Peijnenburg,K.T.C.A., Gillespie,R.G., Maas,D.L.,
+            Hanzawa,N., Tuti,Y., Toha,A.H.A., Aji,L.P. and Becking,L.E.</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>Rhincodon typus isolate HP_NUS63 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial</td>
+        <td>MN759761</td>
+        <td>mitochondrion Rhincodon typus (whale shark)0</td>
+        <td>Rhincodon typus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Chondrichthyes;
+            Elasmobranchii; Galeomorphii; Galeoidea; Orectolobiformes;
+            Rhincodontidae; Rhincodon.</td>
+        <td>Toha,A.H.A., Dailami,M., Anwar,S., Setiawan,J.B., Jentewo,Y.,
+            Lapadi,I., Sutanto,S., Aryasari,R., Ambariyanto,A., Runtuboi,F. and
+            Madduppa,H.</td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td>Brachidontes sp. lineage B CDL-2020 isolate BCM_26 cytochrome c oxidase subunit I (COI) gene, partial cds; mitochondrial</td>
+        <td>MN579024 </td>
+        <td>mitochondrion Mytilidae sp. lineage F CDL-2020</td>
+        <td>Mytilidae sp. lineage F CDL-2020
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Pteriomorphia; Mytilida; Mytiloidea; Mytilidae</td>
+        <td>Leeuw,C.A., Peijnenburg,K.T.C.A., Gillespie,R.G., Maas,D.L.,
+            Hanzawa,N., Tuti,Y., Toha,A.H.A., Aji,L.P. and Becking,L.E.</td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>Mytilidae sp. lineage F CDL-2020 isolate M79_11 cytochrome c
+            oxidase subunit I (COI) gene, partial cds; mitochondrial.</td>
+        <td>MN578266</td>
+        <td>mitochondrion Mytilidae sp. lineage F CDL-2020</td>
+        <td>Mytilidae sp. lineage F CDL-2020
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Pteriomorphia; Mytilida; Mytiloidea; Mytilidae.</td>
+        <td>Leeuw,C.A., Peijnenburg,K.T.C.A., Gillespie,R.G., Maas,D.L.,
+            Hanzawa,N., Tuti,Y., Toha,A.H.A., Aji,L.P. and Becking,L.E.</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>Tridacna maxima clone 2349.12 cytochrome oxidase subunit I (COI)
+            gene, partial cds; mitochondrial.</td>
+        <td>KF446479</td>
+        <td>mitochondrion Tridacna maxima</td>
+        <td>Tridacna maxima
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Mollusca; Bivalvia;
+            Autobranchia; Heteroconchia; Euheterodonta; Imparidentia;
+            Neoheterodontei; Cardiida; Cardioidea; Cardiidae; Tridacninae;
+            Tridacna.</td>
+        <td>DeBoer,T.S., Naguit,M.R., Erdmann,M.V., Ablan-Lagman,M.C.A.,
+            Ambariyanto,A., Carpenter,K.E., Toha,A.H.A. and Barber,P.H.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+      <!-- Pagination -->
+  <nav aria-label="DataTable pagination">
+    <ul class="pagination pagination-circle" id="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+<!-- MDB5 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+<!-- DataTable Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tableRows = Array.from(document.querySelectorAll('#example tbody tr'));
+    const paginationElement = document.getElementById('pagination');
+    let currentPage = 1;
+    let rowsPerPage = parseInt(document.getElementById('rows-per-page').value);
+    const totalPages = () => Math.ceil(tableRows.length / rowsPerPage);
+
+    // Function to display rows based on the current page and rowsPerPage
+    function displayRows(page) {
+      const start = (page - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      tableRows.forEach((row, index) => {
+        row.style.display = (index >= start && index < end) ? '' : 'none';
+      });
+    }
+
+    // Function to create pagination buttons
+    function createPaginationButtons() {
+      paginationElement.innerHTML = ''; // Clear pagination content
+
+      // Create "Previous" button
+      const prevButton = document.createElement('li');
+      prevButton.classList.add('page-item');
+      prevButton.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+      prevButton.onclick = () => changePage(currentPage - 1);
+      if (currentPage === 1) prevButton.classList.add('disabled'); // Disable if on the first page
+      paginationElement.appendChild(prevButton);
+
+      // Create page number buttons
+      for (let i = 1; i <= totalPages(); i++) {
+        const pageButton = document.createElement('li');
+        pageButton.classList.add('page-item');
+        if (i === currentPage) pageButton.classList.add('active'); // Highlight current page
+        pageButton.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        pageButton.onclick = () => changePage(i);
+        paginationElement.appendChild(pageButton);
+      }
+
+      // Create "Next" button
+      const nextButton = document.createElement('li');
+      nextButton.classList.add('page-item');
+      nextButton.innerHTML = `<a class="page-link" href="#">Next</a>`;
+      nextButton.onclick = () => changePage(currentPage + 1);
+      if (currentPage === totalPages()) nextButton.classList.add('disabled'); // Disable if on the last page
+      paginationElement.appendChild(nextButton);
+    }
+
+    // Change the current page and re-render
+    function changePage(page) {
+      if (page < 1 || page > totalPages()) return;
+      currentPage = page;
+      displayRows(page);
+      createPaginationButtons();
+    }
+
+    // Initial render
+    displayRows(currentPage);
+    createPaginationButtons();
+
+    // Search functionality
+    const searchInput = document.getElementById('datatable-search-input');
+    searchInput.addEventListener('input', function() {
+      const query = searchInput.value.toLowerCase();
+      tableRows.forEach(row => {
+        const textContent = row.textContent.toLowerCase();
+        row.style.display = textContent.includes(query) ? '' : 'none';
+      });
+    });
+
+    // Handle changing rows per page
+    const rowsPerPageSelect = document.getElementById('rows-per-page');
+    rowsPerPageSelect.addEventListener('change', function() {
+      rowsPerPage = parseInt(this.value);
+      currentPage = 1;  // Reset to first page on rowsPerPage change
+      displayRows(currentPage);
+      createPaginationButtons();
+    });
+  });
+</script>
+
+</section>
+
+{% endblock %}
